@@ -1,5 +1,6 @@
 package com.example.restservice.controller;
 
+import com.example.restservice.service.LoanService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,20 +13,20 @@ import com.example.restservice.model.LoanMetric;
 @RequestMapping("/loans")
 public class LoanController {
 
+	private final LoanService loanService;
+
+	public LoanController(LoanService loanService) {
+		this.loanService = loanService;
+	}
+
 	@GetMapping("/{loanId}")
 	public Loan getLoan(@PathVariable Long loanId) {
-		return null;
+		return loanService.getLoan(loanId);
 	}
 
-
-	public LoanMetric calculateLoanMetric(Long loanId) {
-		// Call LoanService
-		return null;
-	}
-
-	public LoanMetric calculateLoanMetric(Loan loan) {
-		// Call LoanService
-		return null;
+	@GetMapping("/{loanId}/loan-metric")
+	public LoanMetric calculateLoanMetric(@PathVariable Long loanId) {
+		return loanService.calculateLoanMetric(loanId);
 	}
 
 	public Loan getMaxMonthlyPaymentLoan() {

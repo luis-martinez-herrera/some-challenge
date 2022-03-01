@@ -10,7 +10,7 @@ public interface ILoanMetricCalculator {
 	 * 
 	 * @param loan
 	 */
-	public default boolean isSupported(Loan loan) {
+	default boolean isSupported(Loan loan) {
 		// Validate if the loan type is supported
 		return true;
 	}
@@ -20,6 +20,6 @@ public interface ILoanMetricCalculator {
 	 * 
 	 * @param loan
 	 */
-	public LoanMetric getLoanMetric(Loan loan);
+	LoanMetric getLoanMetric(Loan loan);
 
 }

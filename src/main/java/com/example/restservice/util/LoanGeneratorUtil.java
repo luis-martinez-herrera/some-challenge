@@ -3,16 +3,16 @@ package com.example.restservice.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.restservice.metrics.LoanMetricFactory;
 import com.example.restservice.model.Borrower;
 import com.example.restservice.model.Loan;
 
-public class LoanGeneratonUtil {
+public class LoanGeneratorUtil {
 
-	public static String LOAN_TYPE_STUDENT = "student";
-	public static String LOAN_TYPE_CONSUMER = "consumer";
+
 
 	public static Loan createLoan(Long loanId) {
-		String loanType = loanId % 2 == 0 ? LOAN_TYPE_STUDENT : LOAN_TYPE_CONSUMER;
+		String loanType = loanId % 2 == 0 ? LoanMetricFactory.LOAN_TYPE_STUDENT : LoanMetricFactory.LOAN_TYPE_CONSUMER;
 		Borrower borrower = new Borrower();
 		borrower.setName("Borrower ".concat(loanId.toString()));
 		borrower.setAge(23);
