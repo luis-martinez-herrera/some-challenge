@@ -1,6 +1,5 @@
 package com.example.restservice.service;
 
-import com.example.restservice.RestServiceApplication;
 import com.example.restservice.metrics.LoanMetricCalculator;
 import com.example.restservice.metrics.LoanMetricFactory;
 import com.example.restservice.model.Loan;
@@ -13,15 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class LoanServiceImplTest {

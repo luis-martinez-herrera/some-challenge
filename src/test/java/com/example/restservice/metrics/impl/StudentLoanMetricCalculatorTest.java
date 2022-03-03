@@ -14,7 +14,7 @@ class StudentLoanMetricCalculatorTest {
 
     @Test
     void testLoanMetric() {
-        Loan loan = LoanGeneratorUtil.createLoan(10L);
+        Loan loan = LoanGeneratorUtil.createLoan(1L);
         loan.setType(LoanMetricFactory.LOAN_TYPE_STUDENT);
         loan.setAnnualInterest(6.0);
         loan.setTermMonths(24);
