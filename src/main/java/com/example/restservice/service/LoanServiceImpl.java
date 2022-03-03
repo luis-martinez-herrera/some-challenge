@@ -1,15 +1,16 @@
 package com.example.restservice.service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-import com.example.restservice.metrics.ILoanMetricCalculator;
+import com.example.restservice.metrics.LoanMetricCalculator;
 import com.example.restservice.metrics.LoanMetricFactory;
 import com.example.restservice.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.restservice.model.Loan;
 import com.example.restservice.model.LoanMetric;
-import com.example.restservice.util.LoanGeneratorUtil;
 
 @Service
 public class LoanServiceImpl implements LoanService {
@@ -31,7 +32,11 @@ public class LoanServiceImpl implements LoanService {
 	public LoanMetric calculateLoanMetric(Long loanId) {
 		Loan loan = getLoan(loanId);
 
-		ILoanMetricCalculator metricCalculator = loanMetricFactory.getInstance(loan);
+		return calculateLoanMetric(loan);
+	}
+
+	private LoanMetric calculateLoanMetric(Loan loan) {
+		LoanMetricCalculator metricCalculator = loanMetricFactory.getInstance(loan);
 
 		return metricCalculator.getLoanMetric(loan);
 	}
@@ -39,7 +44,9 @@ public class LoanServiceImpl implements LoanService {
 	@Override
 	public Loan getMaxMonthlyPaymentLoan() {
 		List<Loan> monthlyLoans = loanRepository.getMonthlyLoans();
-		// get the loan with the max monthly payment
-		return null;
+		return monthlyLoans.stream()
+				.max(Comparator.comparing(loan -> calculateLoanMetric(loan).getMonthlyPayment()))
+				.orElseThrow(NoSuchElementException::new);
+
 	}
 }

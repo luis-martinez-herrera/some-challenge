@@ -1,6 +1,6 @@
 package com.example.restservice.metrics.impl;
 
-import com.example.restservice.metrics.ILoanMetricCalculator;
+import com.example.restservice.metrics.LoanMetricCalculator;
 import com.example.restservice.metrics.LoanMetricFactory;
 import com.example.restservice.model.Loan;
 import com.example.restservice.model.LoanMetric;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class ConsumerLoanMetricCalculatorTest {
 
-    ILoanMetricCalculator metricCalculator = new ConsumerLoanMetricCalculator();
+    private LoanMetricCalculator metricCalculator = new ConsumerLoanMetricCalculator();
 
     @Test
     void testLoanMetric() {

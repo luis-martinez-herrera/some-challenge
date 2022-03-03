@@ -3,7 +3,7 @@ package com.example.restservice.metrics;
 import com.example.restservice.model.Loan;
 import com.example.restservice.model.LoanMetric;
 
-public interface ILoanMetricCalculator {
+public interface LoanMetricCalculator {
 
 	/**
 	 * Validates if a loan is supported to calculate metrics

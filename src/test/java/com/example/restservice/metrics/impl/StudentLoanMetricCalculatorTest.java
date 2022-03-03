@@ -1,20 +1,16 @@
 package com.example.restservice.metrics.impl;
 
-import com.example.restservice.metrics.ILoanMetricCalculator;
+import com.example.restservice.metrics.LoanMetricCalculator;
 import com.example.restservice.metrics.LoanMetricFactory;
 import com.example.restservice.model.Loan;
 import com.example.restservice.model.LoanMetric;
 import com.example.restservice.util.LoanGeneratorUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class StudentLoanMetricCalculatorTest {
 
-    ILoanMetricCalculator metricCalculator = new StudentLoanMetricCalculator();
+    private LoanMetricCalculator metricCalculator = new StudentLoanMetricCalculator();
 
     @Test
     void testLoanMetric() {

@@ -2,15 +2,12 @@ package com.example.restservice.metrics.impl;
 
 import org.springframework.stereotype.Component;
 
-import com.example.restservice.metrics.ILoanMetricCalculator;
+import com.example.restservice.metrics.LoanMetricCalculator;
 import com.example.restservice.model.Loan;
 import com.example.restservice.model.LoanMetric;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-
 @Component("ConsumerLoanMetricCalculator")
-public class ConsumerLoanMetricCalculator extends AbstractMetricCalculator implements ILoanMetricCalculator {
+public class ConsumerLoanMetricCalculator extends AbstractMetricCalculator implements LoanMetricCalculator {
 
 	@Override
 	public LoanMetric getLoanMetric(Loan loan) {
