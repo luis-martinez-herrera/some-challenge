@@ -9,6 +9,9 @@ import com.example.restservice.model.Loan;
 
 public class LoanGeneratorUtil {
 
+	private LoanGeneratorUtil() {
+	}
+
 	public static Loan createLoan(Long loanId) {
 		String loanType = loanId % 2 == 0 ? LoanMetricFactory.LOAN_TYPE_STUDENT : LoanMetricFactory.LOAN_TYPE_CONSUMER;
 		Borrower borrower = new Borrower();
