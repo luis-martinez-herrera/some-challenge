@@ -29,9 +29,9 @@ public class LoanController {
 		return loanService.calculateLoanMetric(loanId);
 	}
 
+	@GetMapping("/maximum-monthly-payment")
 	public Loan getMaxMonthlyPaymentLoan() {
-		// Call LoanService
-		return null;
+		return loanService.getMaxMonthlyPaymentLoan();
 	}
 
 }

@@ -18,12 +18,14 @@ class StudentLoanMetricCalculatorTest {
 
     @Test
     void testLoanMetric() {
-        Loan loan = LoanGeneratorUtil.createLoan(2L);
-        loan.setRequestedAmount(1000d);
-        Assertions.assertEquals(LoanMetricFactory.LOAN_TYPE_STUDENT, loan.getType());
+        Loan loan = LoanGeneratorUtil.createLoan(10L);
+        loan.setType(LoanMetricFactory.LOAN_TYPE_STUDENT);
+        loan.setAnnualInterest(6.0);
+        loan.setTermMonths(24);
 
         LoanMetric loanMetric = metricCalculator.getLoanMetric(loan);
 
         Assertions.assertEquals(0.005, loanMetric.getMonthlyInterestRate());
+        Assertions.assertEquals(354.56, loanMetric.getMonthlyPayment());
     }
 }

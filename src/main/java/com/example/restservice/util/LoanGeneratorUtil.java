@@ -9,8 +9,6 @@ import com.example.restservice.model.Loan;
 
 public class LoanGeneratorUtil {
 
-
-
 	public static Loan createLoan(Long loanId) {
 		String loanType = loanId % 2 == 0 ? LoanMetricFactory.LOAN_TYPE_STUDENT : LoanMetricFactory.LOAN_TYPE_CONSUMER;
 		Borrower borrower = new Borrower();
@@ -32,10 +30,10 @@ public class LoanGeneratorUtil {
 		return loan;
 	}
 	
-	public static List<Loan> getRandomLoans(Long numberOfLoans) {
-		List<Loan> loans = new ArrayList<Loan>();
-		for (Integer x = 1; x <= numberOfLoans; x++) {
-			loans.add(createLoan(Long.valueOf(x)));
+	public static List<Loan> getRandomLoans(int numberOfLoans) {
+		List<Loan> loans = new ArrayList<>();
+		for (long x = 1; x <= numberOfLoans; x++) {
+			loans.add(createLoan(x));
 		}
 		return loans;
 	}

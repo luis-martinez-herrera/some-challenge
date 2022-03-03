@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.restservice.metrics.ILoanMetricCalculator;
 import com.example.restservice.metrics.LoanMetricFactory;
+import com.example.restservice.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.restservice.model.Loan;
@@ -14,14 +15,16 @@ import com.example.restservice.util.LoanGeneratorUtil;
 public class LoanServiceImpl implements LoanService {
 
 	private final LoanMetricFactory loanMetricFactory;
+	private final LoanRepository loanRepository;
 
-	public LoanServiceImpl(LoanMetricFactory loanMetricFactory) {
+	public LoanServiceImpl(LoanMetricFactory loanMetricFactory, LoanRepository loanRepository) {
 		this.loanMetricFactory = loanMetricFactory;
+		this.loanRepository = loanRepository;
 	}
 
 	@Override
-	public Loan getLoan(Long id) {
-		return LoanGeneratorUtil.createLoan(id);
+	public Loan getLoan(Long loanId) {
+		return loanRepository.getLoanById(loanId);
 	}
 
 	@Override
@@ -35,7 +38,7 @@ public class LoanServiceImpl implements LoanService {
 
 	@Override
 	public Loan getMaxMonthlyPaymentLoan() {
-		List<Loan> allLoans = LoanGeneratorUtil.getRandomLoans(20L);
+		List<Loan> monthlyLoans = loanRepository.getMonthlyLoans();
 		// get the loan with the max monthly payment
 		return null;
 	}
